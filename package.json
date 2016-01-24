@@ -1,0 +1,11 @@
+{
+  "name": "client_keeper",
+  "version": "1.0.0",
+  "description": "Client management app",
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongojs": "*"
+  },
+    "author": "Tim Chen"
+}
