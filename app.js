@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.get('/clients', function(req, res) {
     console.log('Request for clients recieved...');
 
-    db.clients.find(function(err, docs) {
+    db.clients.find().sort({first_name: 1}, function(err, docs) {
         if (err) {
             res.send(err);
         } else {
@@ -19,6 +19,18 @@ app.get('/clients', function(req, res) {
             res.json(docs);
         }
     });
+});
+
+app.post('/clients', function(req, res) {
+    db.clients.insert(req.body, function(err, doc) { //make sure to have the body-parser
+        if (err) {
+            res.send(err);
+        } else {
+            console.log('Client Added');
+            res.json(doc);
+        }
+    });
+
 });
 
 app.listen(3000);
